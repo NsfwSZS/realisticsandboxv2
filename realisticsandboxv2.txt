@@ -1,0 +1,7 @@
+"realisticsandboxv2"
+{
+    "base"    "base"
+    "title"   "Realistic Sandbox V2"
+    "maps"    "^gm_"
+    "menusystem" "1"
+}

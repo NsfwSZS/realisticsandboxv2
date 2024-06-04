@@ -58,7 +58,9 @@ local validWeapons = {
     ["weapon_jmodsticknade"] = true,
     ["weapon_jmodstickynade"] = true,
     ["weapon_jmodcs"] = true,
+
     ["weapon_handcuffs"] = true,
+    ["weapon_allah"] = true,
 }
 
 local validEntities = {

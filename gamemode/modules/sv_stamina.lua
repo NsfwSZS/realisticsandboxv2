@@ -53,7 +53,7 @@ function stamina()
 							end
 
 							if ply:IsSprinting() then
-								ply.stamina = ply.stamina - 0.5
+								ply.stamina = ply.stamina - 1.2
 							end
 
 							if ply:WaterLevel() == 3 then

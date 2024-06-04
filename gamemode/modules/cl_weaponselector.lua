@@ -18,19 +18,19 @@ surface.CreateFont("NSFONTMINI", {
 
 surface.CreateFont( "EZO_Font_Police", {
     font = "Times New Roman",    
-	size = 21,
-	weight = 100,
-	blursize = 0,
-	scanlines = 0,
-	antialias = true,
-	underline = false,
-	italic = false,
-	strikeout = false,
-	symbol = false,
-	rotary = false,
-	shadow = false,
-	additive = false,
-	outline = false,
+    size = 21,
+    weight = 100,
+    blursize = 0,
+    scanlines = 0,
+    antialias = true,
+    underline = false,
+    italic = false,
+    strikeout = false,
+    symbol = false,
+    rotary = false,
+    shadow = false,
+    additive = false,
+    outline = false,
 })
 
 local weaponSelectorIndex = 1
@@ -47,7 +47,7 @@ end)
 
 local function onIndexChanged()
     weaponSelectorAlpha = 1
-    weaponSelectorFadeTime = CurTime() + 5
+    weaponSelectorFadeTime = CurTime() + 2 -- Изменено на 2 секунды
 
     local ply = LocalPlayer()
     local weapon = ply:GetWeapons()[weaponSelectorIndex]

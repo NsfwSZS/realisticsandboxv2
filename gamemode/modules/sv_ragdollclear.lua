@@ -8,7 +8,7 @@ end
 
 -- Функция для очистки рэгдоллов и связанного с ними оружия
 local function CleanUpRagdolls()
-    print('НАХУЙЙЙЙЙЙ РЭГДОЛЛЫ!!!')
+    print('НАХУЙЙЙЙЙЙ РЭГДОЛЛЫЛЛЛЫЛЫ')
     for _, ragdoll in ipairs(ents.FindByClass("prop_ragdoll")) do
         local owner = RagdollOwner(ragdoll)
         -- Удаляем рэгдолл и связанное с ним оружие, если у него нет владельца или если у владельца не установлен флаг 'fake'

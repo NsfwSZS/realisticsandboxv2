@@ -7,8 +7,8 @@ SWEP.Category = "Другое"
 SWEP.Slot = 5
 SWEP.SlotPos = 3
 SWEP.Spawnable = true
-SWEP.ViewModel = "models/weapons/c_arms_citizen.mdl"
-SWEP.WorldModel = "models/freeman/flexcuffs.mdl"
+SWEP.ViewModel = "models/props_interiors/pot02a.mdl"
+SWEP.WorldModel = "models/props_interiors/pot02a.mdl"
 
 if SERVER then
     util.AddNetworkString("huyvalues")

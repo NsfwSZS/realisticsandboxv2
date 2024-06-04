@@ -145,6 +145,7 @@ function ReturnPlyInfo(ply)
 end
 
 -- функция падения
+-- Функция падения
 function Faking(ply)
 	ply.fake = not ply.fake
 	ply:SetNWBool("fake", ply.fake)
@@ -162,8 +163,8 @@ function Faking(ply)
 		ply:CreateRagdoll()
 		if IsValid(ply:GetNWEntity("DeathRagdoll")) then
 			ply.fakeragdoll = ply:GetNWEntity("DeathRagdoll")
+			ply.fakeragdoll.deadbody = true  -- Mark the ragdoll as a dead body
 			ply:HuySpectate()
-			--ply:SetParent(ply:GetNWEntity("DeathRagdoll"))
 			ply:SetSuppressPickupNotices(false)
 			ply:SetActiveWeapon(nil)
 			ply:DropObject()
@@ -183,7 +184,6 @@ function Faking(ply)
 			SavePlyInfoPreSpawn(ply)
 			local pos = ply:GetNWEntity("DeathRagdoll"):GetPos()
 			local vel = ply:GetNWEntity("DeathRagdoll"):GetVelocity()
-			--ply:UnSpectate()
 			ply.unfaked = true
 			ply:SetNWBool("unfaked", ply.unfaked)
 			local eyepos = ply:EyeAngles()
@@ -203,6 +203,17 @@ function Faking(ply)
 			ply:SetNWEntity("DeathRagdoll", nil)
 		end
 	end
+end
+
+-- функция, определяет хозяина рэгдолла
+function RagdollOwner(rag)
+	for k, v in ipairs(player.GetAll()) do
+		local ply = v
+		if ply:GetNWEntity("DeathRagdoll") == rag then
+			return ply
+		end
+	end
+	return false
 end
 
 --функция стрельбы лежа
@@ -226,9 +237,10 @@ hook.Add(
 function RagdollOwner(rag)
 	for k, v in ipairs(player.GetAll()) do
 		local ply = v
-		if ply:GetNWEntity("DeathRagdoll") == rag then return ply end
+		if ply:GetNWEntity("DeathRagdoll") == rag then
+			return ply
+		end
 	end
-
 	return false
 end
 
@@ -342,37 +354,46 @@ hook.Add(
 
 --ply:GetNWEntity("DeathRagdoll").index=table.MemberValuesFromKey(BleedingEntities,ply:GetNWEntity("DeathRagdoll"))
 hook.Add(
-	"Think",
-	"BodyDespawn",
-	function()
-		for i, ent in pairs(ents.FindByClass("prop_ragdoll")) do
-			if ent.deadbody and engine.ActiveGamemode() == "sandbox" then
-				if IsValid(ent.ZacConsLH) then
-					ent.ZacConsLH:Remove()
-					ent.ZacConsLH = nil
-				end
+    "Think",
+    "BodyDespawn",
+    function()
+        for i, ent in ipairs(ents.FindByClass("prop_ragdoll")) do
+            if ent.deadbody and engine.ActiveGamemode() == "sandbox" then
+                -- Remove constraints if they exist
+                if IsValid(ent.ZacConsLH) then
+                    ent.ZacConsLH:Remove()
+                    ent.ZacConsLH = nil
+                end
 
-				if IsValid(ent.ZacConsRH) then
-					ent.ZacConsRH:Remove()
-					ent.ZacConsRH = nil
-				end
+                if IsValid(ent.ZacConsRH) then
+                    ent.ZacConsRH:Remove()
+                    ent.ZacConsRH = nil
+                end
 
-				if not timer.Exists("DecayTimer" .. ent:EntIndex()) then
-					timer.Create(
-						"DecayTimer" .. ent:EntIndex(),
-						60,
-						1,
-						function()
-							if IsValid(ent) then
-								ent:Remove()
-								table.RemoveByValue(BleedingEntities, ent)
-							end
-						end
-					)
-				end
-			end
-		end
-	end
+                -- Create a decay timer for the ragdoll
+                if not timer.Exists("DecayTimer" .. ent:EntIndex()) then
+                    timer.Create(
+                        "DecayTimer" .. ent:EntIndex(),
+                        60, -- Time before the ragdoll is removed (in seconds)
+                        1,  -- Number of repetitions
+                        function()
+							print('123')
+                            if IsValid(ent) then
+                                -- Удаляем все связанные с мертвым телом оружие
+                                for _, weapon in ipairs(DeadRagdollWeapons) do
+                                    if IsValid(weapon) and weapon:GetOwner() == ent then
+                                        weapon:Remove()
+                                    end
+                                end
+                                ent:Remove()
+                                table.RemoveByValue(BleedingEntities, ent)
+                            end
+                        end
+                    )
+                end
+            end
+        end
+    end
 )
 
 util.AddNetworkString("ragplayercolor")

@@ -3,77 +3,67 @@ local Vectors = {
 
 	["akm"] = Vector(5, -2, 0),
 }
-
+DeadRagdollWeapons = {}
 local Vectors2 = {
 	["akm"] = Vector(12, -3, -5),
 }
 
 local vecZero = Vector(0, 0, 0)
 function SpawnWeapon(ply)
-	local guninfo = weapons.Get(ply.curweapon)
-	if guninfo.Base ~= "nsbase" then return end
-	if not IsValid(ply.wep) then
-		local rag = ply:GetNWEntity("DeathRagdoll")
-		if IsValid(rag) then
-			ply.FakeShooting = true
-			ply.wep = ents.Create("wep")
-			ply.wep:SetModel(guninfo.WorldModel)
-			ply.wep:SetOwner(ply)
-			local vec1 = rag:GetPhysicsObjectNum(7):GetPos()
-			local vec2 = vecZero
-			vec2:Set(guninfo.fakeHandRight)
-			vec2:Rotate(rag:GetPhysicsObjectNum(7):GetAngles())
-			ply.wep:SetPos(vec1 + vec2)
-			ply.wep:SetAngles(rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_R_Hand"))):GetAngles() - Angle(0, 0, 180))
-			ply.wep:SetCollisionGroup(COLLISION_GROUP_WEAPON)
-			ply.wep:Spawn()
-			ply.wep:GetPhysicsObject():SetMass(0)
-			ply.wep.GunInfo = guninfo
-			CheckAmmo(ply, ply.wep)
-			if not IsValid(ply.WepCons) then
-				local cons = constraint.Weld(ply.wep, rag, 0, 7, 0, true)
-				if IsValid(cons) then
-					ply.WepCons = cons
-				end
-			end
+    local guninfo = weapons.Get(ply.curweapon)
+    if guninfo.Base ~= "nsbase" then return end
+    if not IsValid(ply.wep) then
+        local rag = ply:GetNWEntity("DeathRagdoll")
+        if IsValid(rag) then
+            ply.FakeShooting = true
+            ply.wep = ents.Create("wep")
+            ply.wep:SetModel(guninfo.WorldModel)
+            ply.wep:SetOwner(ply)
+            local vec1 = rag:GetPhysicsObjectNum(7):GetPos()
+            local vec2 = Vector(0, 0, 0)
+            vec2:Set(guninfo.fakeHandRight)
+            vec2:Rotate(rag:GetPhysicsObjectNum(7):GetAngles())
+            ply.wep:SetPos(vec1 + vec2)
+            ply.wep:SetAngles(rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_R_Hand"))):GetAngles() - Angle(0, 0, 180))
+            ply.wep:SetCollisionGroup(COLLISION_GROUP_WEAPON)
+            ply.wep:Spawn()
+            ply.wep:GetPhysicsObject():SetMass(0)
+            ply.wep.GunInfo = guninfo
+            CheckAmmo(ply, ply.wep)
+            if not IsValid(ply.WepCons) then
+                local cons = constraint.Weld(ply.wep, rag, 0, 7, 0, true)
+                if IsValid(cons) then
+                    ply.WepCons = cons
+                end
+            end
 
-			ply.wep.curweapon = ply.curweapon
-			ply:SetNWString("FakeWep", ply.curweapon)
-			if guninfo.TwoHands then
-				--[[local vec1 = rag:GetPhysicsObjectNum(7):GetPos()
-				local vec22 = guninfo.fakeHandLeft
-				vec22:Rotate(rag:GetPhysicsObjectNum(7):GetAngles())
-				rag:GetPhysicsObjectNum(5):SetPos(vec1 + vec22)
-				rag:GetPhysicsObjectNum(5):SetAngles(ply:GetNWEntity("DeathRagdoll"):GetPhysicsObjectNum(7):GetAngles() - Angle(0, 0, 180))
-				if not IsValid(ply.WepCons2) then
-					local cons2 = constraint.Weld(ply.wep, rag, 0, 5, 0, true) --2hand constraint
-					if IsValid(cons2) then
-						ply.WepCons2 = cons2
-					end
-				end]]
-				--
-				ply.wep:GetPhysicsObject():SetMass(1)
-				local vec1 = rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_R_Hand"))):GetPos()
-				local vec22 = vecZero
-				vec22:Set(guninfo.fakeHandLeft)
-				vec22:Rotate(rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_R_Hand"))):GetAngles())
-				rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_L_Hand"))):SetPos(vec1 + vec22)
-				rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_L_Hand"))):SetAngles(rag:GetPhysicsObjectNum(7):GetAngles() - Angle(0, 0, 180))
-				if not IsValid(ply.WepCons2) then
-					local cons2 = constraint.Weld(ply.wep, rag, 0, rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_L_Hand")), 0, true) --2hand constraint
-					if IsValid(cons2) then
-						ply.WepCons2 = cons2
-					end
-				end
-			end
-		end
-	end
+            ply.wep.curweapon = ply.curweapon
+            ply:SetNWString("FakeWep", ply.curweapon)
+            rag.AssociatedWeapon = ply.wep -- Store weapon reference in ragdoll
+
+            if guninfo.TwoHands then
+                ply.wep:GetPhysicsObject():SetMass(1)
+                local vec1 = rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_R_Hand"))):GetPos()
+                local vec2 = Vector(0, 0, 0)
+                vec2:Set(guninfo.fakeHandLeft)
+                vec2:Rotate(rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_R_Hand"))):GetAngles())
+                rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_L_Hand"))):SetPos(vec1 + vec2)
+                rag:GetPhysicsObjectNum(rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_L_Hand"))):SetAngles(rag:GetPhysicsObjectNum(7):GetAngles() - Angle(0, 0, 180))
+                if not IsValid(ply.WepCons2) then
+                    local cons2 = constraint.Weld(ply.wep, rag, 0, rag:TranslateBoneToPhysBone(rag:LookupBone("ValveBiped.Bip01_L_Hand")), 0, true)
+                    if IsValid(cons2) then
+                        ply.WepCons2 = cons2
+                    end
+                end
+            end
+        end
+    end
 end
+
 
 function DespawnWeapon(ply)
 	ply.Info.Weapons[ply.Info.ActiveWeapon].Clip1 = ply.wep.Clip
 	ply.Info.ActiveWeapon2 = ply.curweapon
-	--if ply:Alive() and !ply.wep.pickable then
 	if IsValid(ply.wep) and ply:Alive() then
 		ply.wep:Remove()
 		ply.wep = nil
@@ -99,11 +89,6 @@ function DespawnWeapon(ply)
 	end
 
 	ply.FakeShooting = false
-	--[[else
-		ply.wep.pickable=true
-		ply.wep=nil
-		ply.FakeShooting=false
-	end--]]
 end
 
 function CheckAmmo(ply, wep)
@@ -111,31 +96,31 @@ function CheckAmmo(ply, wep)
 	if ply:Alive() then
 		wep.Clip = ply.Info.Weapons[ply.Info.ActiveWeapon].Clip1
 		wep.MaxClip = guninfo.Primary.ClipSize
-		--print(ply:GetAmmoCount(ply.Info.ActiveWeapon2:GetPrimaryAmmoType()))
 		wep.Amt = ply:GetAmmoCount(ply.Info.ActiveWeapon2:GetPrimaryAmmoType())
 		wep.AmmoType = ply.Info.ActiveWeapon2:GetPrimaryAmmoType()
 	else
 		wep.Clip = ply:GetActiveWeapon():Clip1()
 		wep.AmmoType = ply:GetActiveWeapon():GetPrimaryAmmoType()
-		--print(wep.Clip, wep.AmmoType)
 	end
 end
 
 function SpawnWeaponEnt(weapon, pos, ply)
-	local wep = ents.Create("wep")
-	local guninfo = weapons.Get(weapon)
-	wep:SetModel(guninfo.WorldModel)
-	wep:SetPos(pos)
-	wep:SetCollisionGroup(COLLISION_GROUP_WEAPON)
-	wep:Spawn()
-	wep:SetAngles(ply:EyeAngles())
-	wep:GetPhysicsObject():ApplyForceOffset(VectorRand(-2, 2), wep:GetPos())
-	wep.curweapon = ply.curweapon
-	wep.Clip = ply.Clip
-	wep.AmmoType = ply.AmmoType
-	wep.canpickup = true
+    local wep = ents.Create("wep")
+    local guninfo = weapons.Get(weapon)
+    wep:SetModel(guninfo.WorldModel)
+    wep:SetPos(pos)
+    wep:SetCollisionGroup(COLLISION_GROUP_WEAPON)
+    wep:Spawn()
+    wep:SetAngles(ply:EyeAngles())
+    wep:GetPhysicsObject():ApplyForceOffset(VectorRand(-2, 2), wep:GetPos())
+    wep.curweapon = ply.curweapon
+    wep.Clip = ply.Clip
+    wep.AmmoType = ply.AmmoType
+    wep.canpickup = true
 
-	return wep
+    table.insert(DeadRagdollWeapons, wep)
+
+    return wep
 end
 
 function Reload(wep)

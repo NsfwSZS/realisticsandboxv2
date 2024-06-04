@@ -1,3 +1,38 @@
+surface.CreateFont("NSFONT", {
+    font = "Roboto",
+    size = ScrW() * (26 / 1000),
+    weight = 300,
+    antialias = true,
+    shadow = false,
+    extended = true,
+})
+
+surface.CreateFont("NSFONTMINI", {
+    font = "Roboto",
+    size = ScrW() * (26 / 2500),
+    weight = 300,
+    antialias = true,
+    shadow = false,
+    extended = true,
+})
+
+surface.CreateFont( "EZO_Font_Police", {
+    font = "Times New Roman",    
+	size = 21,
+	weight = 100,
+	blursize = 0,
+	scanlines = 0,
+	antialias = true,
+	underline = false,
+	italic = false,
+	strikeout = false,
+	symbol = false,
+	rotary = false,
+	shadow = false,
+	additive = false,
+	outline = false,
+})
+
 local weaponSelectorIndex = 1
 local weaponSelectorDeltaIndex = 1
 local weaponSelectorInfoAlpha = 0

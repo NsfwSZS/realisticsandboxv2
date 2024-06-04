@@ -4,6 +4,69 @@ include("shared.lua")
 
 -- local startTime = SysTime()
 
+local validWeapons = {
+    ["gmod_tool"] = true,
+    ["weapon_physgun"] = true,
+    ["weapon_hands"] = true,
+    ["weapon_ak47"] = true,
+    ["weapon_deagle"] = true,
+    ["weapon_glock"] = true,
+    ["weapon_m249"] = true,
+    ["weapon_m3super"] = true,
+    ["weapon_m4a1"] = true,
+    ["weapon_scout"] = true,
+    ["weapon_xm1014"] = true,
+    --["weapon_frag"] = true,
+    --["weapon_pistol"] = true,
+    ["weapon_rpg"] = true,
+
+    ["weapon_g3sg1"] = true,
+    ["weapon_hg_kitknife"] = true,
+    ["weapon_hg_sleagehammer"] = true,
+    ["weapon_hg_shovel"] = true,
+    ["weapon_hg_fubar"] = true,
+    ["weapon_hg_fireaxe"] = true,
+    ["weapon_hg_hatchet"] = true,
+    ["weapon_hg_metalbat"] = true,
+    ["weapon_hg_crowbar"] = true,
+    ["weapon_hg_sleagehammer"] = true,
+
+    ["weapon_usp"] = true,
+    ["weapon_usp-s"] = true,
+    ["weapon_pm"] = true, 
+    ["weapon_p226"] = true,   
+    ["weapon_ump45"] = true,
+    ["weapon_p90"] = true,
+    ["weapon_mp5"] = true,
+    ["weapon_thompson"] = true,
+    ["weapon_mac10"] = true,
+    ["weapon_mp5"] = true,
+    ["weapon_remington870"] = true,
+    ["weapon_asval"] = true,
+    ["weapon_famas"] = true,
+    ["weapon_fal"] = true,
+    ["weapon_galil"] = true,
+    ["weapon_beretta"] = true,
+    ["weapon_aug"] = true,
+
+    ["weapon_jmodnade"] = true,
+    ["weapon_jmodflash"] = true,
+    ["weapon_jmoddynamite"] = true,
+    ["weapon_jmodgas"] = true,
+    ["weapon_jmodbundle"] = true,
+    ["weapon_jmodsmoke"] = true,
+    ["weapon_jmodsticknade"] = true,
+    ["weapon_jmodstickynade"] = true,
+    ["weapon_jmodcs"] = true,
+}
+
+local validEntities = {
+    ["item_ammo_357"] = true,
+    ["item_ammo_pistol"] = true,
+    ["item_ammo_smg1"] = true,
+    ["ent_hgjack_f1nade"] = true,
+}
+
 local function ProcessFiles(folder, isServer)
     local files, folders = file.Find(folder .. "/*", "LUA")
     local AddCSLuaFile = AddCSLuaFile

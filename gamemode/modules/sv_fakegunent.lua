@@ -28,7 +28,7 @@ function SpawnWeapon(ply)
 			ply.wep:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 			ply.wep:Spawn()
 			ply.wep:GetPhysicsObject():SetMass(0)
-			--ply.wep.GunInfo = guninfo
+			ply.wep.GunInfo = guninfo
 			CheckAmmo(ply, ply.wep)
 			if not IsValid(ply.WepCons) then
 				local cons = constraint.Weld(ply.wep, rag, 0, 7, 0, true)

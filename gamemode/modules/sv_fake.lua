@@ -1416,7 +1416,7 @@ hook.Add(
 			end
 
 			local guninfo = weapons.Get(newwep:GetClass())
-			if guninfo.Base == "nsbase" then
+			if guninfo ~= nil and guninfo.Base == "nsbase" then
 				if IsValid(ply.wep) then
 					DespawnWeapon(ply)
 				end

@@ -14,7 +14,6 @@ local function CleanUpRagdolls()
             if IsValid(ragdoll.AssociatedWeapon) then
                 ragdoll.AssociatedWeapon:Remove()
             end
-            -- Удаляем рэгдолл
             ragdoll:Remove()
         end
     end

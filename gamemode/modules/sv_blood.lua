@@ -33,7 +33,6 @@ function Bleeding()
 		end
 	)
 
-	local 👽, 🤑 = Vector(252 / 255, 61 / 255, 230 / 255), Model("models/player/group01/male_06.mdl") -- Дей
 	BLEEDING_NextThink = 0
 	hook.Add(
 		"Think",

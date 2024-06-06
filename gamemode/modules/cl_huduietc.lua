@@ -690,3 +690,50 @@ net.Receive("CustomNotification", function()
     local duration = net.ReadInt(32)
     CreateNotification(text, duration, icon)
 end)
+
+-- noclip
+
+hook.Add("HUDPaint", "DrawPlayerInfo", function()
+    if LocalPlayer():GetMoveType() ~= MOVETYPE_NOCLIP then return end
+
+    for _, ply in ipairs(player.GetAll()) do
+        if ply == LocalPlayer() then continue end
+
+        local mins, maxs = ply:GetCollisionBounds()
+        local plyPos = ply:GetPos()
+        local corners = {
+            ply:LocalToWorld(mins),
+            ply:LocalToWorld(Vector(mins.x, maxs.y, mins.z)),
+            ply:LocalToWorld(Vector(maxs.x, maxs.y, mins.z)),
+            ply:LocalToWorld(Vector(maxs.x, mins.y, mins.z)),
+            ply:LocalToWorld(maxs),
+            ply:LocalToWorld(Vector(mins.x, maxs.y, maxs.z)),
+            ply:LocalToWorld(Vector(mins.x, mins.y, maxs.z)),
+            ply:LocalToWorld(Vector(maxs.x, mins.y, maxs.z))
+        }
+        local screenCorners = {}
+        for i = 1, 8 do
+            screenCorners[i] = corners[i]:ToScreen()
+        end
+        local minX, minY, maxX, maxY = ScrW(), ScrH(), 0, 0
+        for _, corner in ipairs(screenCorners) do
+            if corner.visible then
+                minX = math.min(minX, corner.x)
+                minY = math.min(minY, corner.y)
+                maxX = math.max(maxX, corner.x)
+                maxY = math.max(maxY, corner.y)
+            end
+        end
+        surface.SetDrawColor(255, 255, 255)
+        surface.DrawOutlinedRect(minX, minY, maxX - minX, maxY - minY)
+        local eyePos = ply:EyePos()
+        local eyeAngles = ply:EyeAngles()
+        local traceEndPos = eyePos + eyeAngles:Forward() * 400
+
+        local screenPos = eyePos:ToScreen()
+        local traceEndScreen = traceEndPos:ToScreen()
+        draw.SimpleText(ply:Nick(), "NSFONTMINI", screenPos.x, screenPos.y - 20, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+        surface.SetDrawColor(255, 255, 255)
+        surface.DrawLine(screenPos.x, screenPos.y, traceEndScreen.x, traceEndScreen.y)
+    end
+end)

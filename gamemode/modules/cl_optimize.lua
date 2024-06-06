@@ -45,38 +45,6 @@ if CLIENT then
 	end
 
 	hook.Add("InitPostEntity", "runValid", runWhenValid)
-
-	local chatCommands = {
-		["!al"] = function()
-			if not antilag then
-				antilagOn()
-			end
-		end,
-		["!al 1"] = function()
-			if not antilag then
-				antilag = true
-				antilagOn()
-			end
-			RunConsoleCommand("bucket_mcore", "1")
-		end,
-		["!al 0"] = function()
-			if antilag then
-				antilagOff()
-				antilag = false
-			end
-			RunConsoleCommand("bucket_mcore", "0")
-		end,
-	}
-
-	hook.Add("OnPlayerChat", "bucketMcore", function(ply, strText, bTeam, bDead)
-		if ply == LocalPlayer() then
-			strText = string.lower(strText)
-			if chatCommands[strText] ~= nil then
-				chatCommands[strText]()
-				return true
-			end
-		end
-	end)
 end
 
 local function antiWidget(ent)

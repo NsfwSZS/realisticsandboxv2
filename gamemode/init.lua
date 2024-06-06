@@ -215,3 +215,8 @@ hook.Add("CanTool", "RestrictCreatorTool", function(ply, tr, tool)
     end
 end)
 
+function GM:PlayerLoadout( ply )
+    ply:StripWeapons() 
+    ply:Give("weapon_hands")
+    return true
+end

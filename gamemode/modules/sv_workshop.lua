@@ -8,7 +8,7 @@ local workshops = {
 local function addWorkshops()
     for _, workshop in pairs(workshops) do
         resource.AddWorkshop(workshop.id)
-        print("Workshop '" .. workshop.name .. " Add.")
+        -- print("Workshop ' " .. workshop.name .. " ' Add.")
     end
 end
 

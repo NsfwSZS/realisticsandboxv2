@@ -52,8 +52,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/weapons/w_smg_mp5.mdl"
-SWEP.WorldModel				= "models/weapons/w_smg_mp5.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_smg_mp5.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_smg_mp5.mdl"
 
 SWEP.addPos = Vector(10, -1.05, 7)
 SWEP.addAng = Angle(-8.5, 2.2, 0)

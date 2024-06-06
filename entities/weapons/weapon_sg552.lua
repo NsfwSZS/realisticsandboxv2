@@ -50,8 +50,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/weapons/w_rif_sg552.mdl"
-SWEP.WorldModel				= "models/weapons/w_rif_sg552.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_rif_sg552.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_rif_sg552.mdl"
 
 SWEP.addAng = Angle(-0.85,-0.59,1) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust

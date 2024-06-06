@@ -43,8 +43,8 @@ SWEP.SlotPos				= 2
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/weapons/w_pist_usp_silencer.mdl"
-SWEP.WorldModel				= "models/weapons/w_pist_usp_silencer.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_pist_usp_silencer.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_pist_usp_silencer.mdl"
 
 SWEP.addPos = Vector(5, 0.1, 4)
 SWEP.addAng = Angle(-2.5, 4.9, 0)

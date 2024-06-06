@@ -50,8 +50,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/weapons/w_rif_aug.mdl"
-SWEP.WorldModel				= "models/weapons/w_rif_aug.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_rif_aug.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_rif_aug.mdl"
 
 SWEP.addAng = Angle(-0.85,-0.59,1) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,50) -- Barrel ang adjust
@@ -77,7 +77,7 @@ if CLIENT then
         slbweps[self] = true
         if SERVER then return end
         self.rtmat = GetRenderTarget("huy-glass", 512, 512, false)  
-        self.mat = Material("models/weapons/w_models/w_rif_aug/433_glass")
+        self.mat = Material("models/weapons/nsbase/w_models/w_rif_aug/433_glass")
         self.mat:SetTexture("$basetexture",self.rtmat)
     
         local texture_matrix = self.mat:GetMatrix("$basetexturetransform")

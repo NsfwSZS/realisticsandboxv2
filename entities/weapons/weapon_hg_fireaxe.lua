@@ -1,7 +1,7 @@
-SWEP.Base = "nsbase_melee"
+SWEP.Base = "weapon_hg_melee_base"
 
-SWEP.PrintName = "Пожарный Топор"
-SWEP.Category = "Оружие | Холодное Оружие"
+SWEP.PrintName = "Пожарный топор"
+SWEP.Category = "Оружие - Ближний Бой"
 SWEP.Instructions = "Массивный топор для вскрытия и разборки конструкций при тушении пожара."
 
 SWEP.Spawnable= true
@@ -46,5 +46,5 @@ SWEP.DrawSound = "weapons/melee/holster_in_light.wav"
 SWEP.HitSound = "weapons/shove_hit.wav"
 SWEP.FlashHitSound = "snd_jack_hmcd_axehit.wav"
 SWEP.ShouldDecal = true
-SWEP.HoldTypeWep = "melee2"
+SWEP.HoldTypeWep = "knife"
 SWEP.DamageType = DMG_SLASH

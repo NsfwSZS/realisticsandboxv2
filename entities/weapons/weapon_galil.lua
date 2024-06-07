@@ -51,8 +51,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/district/w_rif_galil.mdl"
-SWEP.WorldModel				= "models/district/w_rif_galil.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_rif_galil.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_rif_galil.mdl"
 
 SWEP.addAng = Angle(0,0,0) -- Barrel pos adjust
 SWEP.addPos = Vector(0,4,0) -- Barrel ang adjust

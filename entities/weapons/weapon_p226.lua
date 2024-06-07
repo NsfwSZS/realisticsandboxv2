@@ -46,8 +46,8 @@ SWEP.SlotPos				= 2
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/district/w_pist_p228.mdl"
-SWEP.WorldModel				= "models/district/w_pist_p228.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_pist_p228.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_pist_p228.mdl"
 
 SWEP.addAng = Angle(0.8,-0.1,0) -- Barrel ang adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel pos adjust

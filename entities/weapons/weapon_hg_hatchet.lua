@@ -1,7 +1,7 @@
-SWEP.Base = "nsbase_melee"
+SWEP.Base = "weapon_hg_melee_base"
 
-SWEP.PrintName = "Топор"
-SWEP.Category = "Оружие | Холодное Оружие"
+SWEP.PrintName = "Топорик"
+SWEP.Category = "Оружие - Ближний Бой"
 SWEP.Instructions = "Одноручный ударный инструмент с острым лезвием с одной стороны, используемым для рубки и колки дерева, и наконечником молота с другой стороны."
 
 SWEP.Spawnable= true
@@ -46,5 +46,5 @@ SWEP.DrawSound = "weapons/melee/holster_in_light.wav"
 SWEP.HitSound = "snd_jack_hmcd_knifehit.wav"
 SWEP.FlashHitSound = "snd_jack_hmcd_axehit.wav"
 SWEP.ShouldDecal = true
-SWEP.HoldTypeWep = "melee"
+SWEP.HoldTypeWep = "knife"
 SWEP.DamageType = DMG_SLASH

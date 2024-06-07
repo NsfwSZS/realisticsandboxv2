@@ -48,7 +48,7 @@ SWEP.Slot					= 1
 SWEP.SlotPos				= 2
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
-
+-- tyt naod
 SWEP.ViewModel				= "models/pwb/weapons/w_glock17_checha17.mdl"
 SWEP.WorldModel				= "models/pwb/weapons/w_glock17_checha17.mdl"
 

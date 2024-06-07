@@ -870,8 +870,7 @@ function FireShot(wep)
 	return nil end
 
 	wep.NextShot = CurTime() + weptable.ShootWait*1.2
-	if wep.curweapon == "weapon_mosin" then ply:EmitSound("snd_jack_hmcd_boltcycle.wav",55,100,1,CHAN_ITEM,0,0) end
-
+	
 	local Attachment = wep:GetAttachment(wep:LookupAttachment("muzzle"))
 
 	local shootOrigin = Attachment.Pos

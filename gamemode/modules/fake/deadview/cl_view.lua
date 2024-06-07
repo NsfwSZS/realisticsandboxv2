@@ -49,7 +49,7 @@ surface.CreateFont("HomigradFontSmall",{
 
 
 local deathtrack = {
-	"https://cdn.discordapp.com/attachments/1154042672554725426/1159884765369999431/death3.mp3?ex=6532a5dd&is=652030dd&hm=faf024fe64613698e18245ac6e648f45b45cad0eb8248304c9f992eac5bbedda&"
+	"https://cdn.discordapp.com/attachments/1248484908188303452/1248485116741812288/death.mp3?ex=6663d5df&is=6662845f&hm=a84c35c0de6cbac0193c1f098a74ac11a1f1f3c961e62495437b8dfeef98d2366&"
 }
 local g_station = nil
 local playing = false
@@ -59,23 +59,7 @@ local deathtexts = {
 	"ПОТРАЧЕНО",
 	"ВАУ, ТЫ УМЕР",
 	"ЖИЗНЬ ЗАКОНЧЕНА",
-	"GAME OVER",
-	"WASTED",
-	"МЁРТВ",
-	"ПОМЕР",
-	"МЕРТВЕЦ",
-	"СДОХ",
-	"ТВОЯ ОСТАНОВКА",
-	"ВРЕМЯ ВЫШЛО",
-	"МИССИЯ ПРОВАЛЕНА",
-	"ВОТ И ВСЕ!",
-	"КОНЕЦ",
-	"КОНЦОВКА",
-	"DEAD",
-	"MISSION FAILED",
-	"МИССИЯ ПРОВАЛЕНА",
-	"PRESS R TO RESTART!",
-	"TRY AGAIN"
+	"КРЫСЬКА ЭФНУЛАСЬ"
 }
 net.Receive("pophead",function(len)
 	local rag = net.ReadEntity()

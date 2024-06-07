@@ -51,8 +51,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/district/w_snip_g3sg1.mdl"
-SWEP.WorldModel				= "models/district/w_snip_g3sg1.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_snip_g3sg1.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_snip_g3sg1.mdl"
 
 SWEP.addAng = Angle(0,0,0) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust
@@ -66,7 +66,7 @@ SWEP.ScopePos = Vector(0,0,0)
 SWEP.ScopeSize = 0.7
 SWEP.ScopeAdjust = Angle(0,0,0)
 SWEP.ScopeFov = 2.5
-SWEP.ScopeMat = Material("decals/perekrestie3.png")
+SWEP.ScopeMat = Material("decals/kibarms3x.png")
 SWEP.ScopeRot = -3
 
 if CLIENT then
@@ -82,8 +82,8 @@ if CLIENT then
         local texture_matrix = self.mat:GetMatrix("$basetexturetransform")
         texture_matrix:SetAngles( Angle(0,180,0) )
         self.mat:SetMatrix("$basetexturetransform",texture_matrix)
-    end
-    
+end
+
     function SWEP:AdjustMouseSensitivity()
         return (self:GetOwner():KeyDown(IN_ATTACK2) and 0.3) or 1
     end

@@ -18,7 +18,7 @@ SWEP.Primary.Ammo			= "9x39 mm"
 SWEP.Primary.Cone = 0
 SWEP.Primary.Damage = 60
 SWEP.Primary.Spread = 0
-SWEP.Primary.Sound = "homigrad/weapons/rifle/val.wav"
+SWEP.Primary.Sound = "weapons/m4a1s/us_fire01.wav"
 SWEP.Primary.FarSound = "weapons/m4a1s/distant.wav"
 SWEP.Primary.Force = 20
 SWEP.ReloadTime = 2.8
@@ -49,15 +49,23 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/pwb2/weapons/w_asval_checha2.mdl"
-SWEP.WorldModel				= "models/pwb2/weapons/w_asval_checha2.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_rif_asval.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_rif_asval.mdl"
 
 SWEP.addAng = Angle(0,0,0) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust
 SWEP.SightAng = Angle(0,0,0) -- Sight ang
-SWEP.SightPos = Vector(-5,0.6,4.3)
+SWEP.SightPos = Vector(-5,1.1,4.3)
 
 SWEP.Mobility = 1.5
+
+function SWEP:Think()
+    if self:GetNWBool("WEP_Supressor", false) == true then
+        self.Primary.Force = 15
+    else
+        self.Primary.Force = 28
+    end
+end
 
 if CLIENT then
     function SWEP:Think()

@@ -1,7 +1,7 @@
-SWEP.Base = "nsbase_melee"
+SWEP.Base = "weapon_hg_melee_base"
 
 SWEP.PrintName = "Монтировка"
-SWEP.Category = "Оружие | Холодное Оружие"
+SWEP.Category = "Оружие - Ближний Бой"
 SWEP.Instructions = "Ручной ударный и рычажный инструмент, один из наиболее древних видов инструмента, известных человечеству, наряду с молотком, зубилом, топором, лопатой."
 
 SWEP.Spawnable= true

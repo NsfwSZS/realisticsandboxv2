@@ -1,8 +1,8 @@
 SWEP.Base = 'nsbase' -- base
 
-SWEP.PrintName 				= "АКM"
+SWEP.PrintName 				= "AK47"
 SWEP.Author 				= "Kalashnikov"
-SWEP.Instructions			= "АКМ - Автомат Калашникова Модернизированный, питается патронами 7.62x54мм."
+SWEP.Instructions			= ""
 SWEP.Category 				= "Оружие - Винтовки"
 
 SWEP.Spawnable 				= true
@@ -51,8 +51,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/pwb/weapons/w_akm_checha4.mdl"
-SWEP.WorldModel				= "models/pwb/weapons/w_akm_checha4.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_rif_ak47.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_rif_ak47.mdl"
 
 SWEP.vbwPos = Vector(3,-5,0)
 

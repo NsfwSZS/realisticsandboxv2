@@ -58,8 +58,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/district/w_shot_xm1014_checha6.mdl"
-SWEP.WorldModel				= "models/district/w_shot_xm1014_checha6.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_shot_xm1014.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_shot_xm1014.mdl"
 
 SWEP.addAng = Angle(0.5,0,0) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust

@@ -198,7 +198,7 @@ function GM:PlayerCanPickupWeapon(ply, weapon)
             net.WriteInt(5, 32)
             net.Send(ply)
         end
-        return false
+        return true
     end
 end
 
@@ -208,19 +208,58 @@ function GM:PlayerLoadout( ply )
     return true
 end
 
--- hook.Add("PlayerSpawn","Standart",function( ply )
---     --jmod cum incoming
--- 	--net.Start("remove_jmod_effects")
--- 	--net.Broadcast()
--- 	--jmod cum end
--- 	ply.firstTimeNotifiedLeftLeg = true
--- 	ply.firstTimeNotifiedRightLeg = true
--- 	ply.attackees = {}
--- 	ply:SetCanZoom(false)
--- 	ply.Blood = 5000
--- 	ply.pain = 0
+hook.Add("PlayerSpawn","Damage",function(ply)
+    if PLYSPAWN_OVERRIDE then return end
 
--- end)
+	ply.Organs = {
+		['brain']=5,
+		['lungs']=40,
+		['liver']=10,
+		['stomach']=30,
+		['intestines']=30,
+		['heart']=20,
+		['artery']=1,
+		['spine']=10
+	}
+
+	ply.hungry = 89
+	ply.hungryregen = 0
+	ply.hungryNext = 0
+	ply.hungryMessage = nil
+
+	ply.InternalBleeding=nil
+	ply.InternalBleeding2=nil
+	ply.InternalBleeding3=nil
+	ply.InternalBleeding4=nil
+	ply.InternalBleeding5=nil
+	ply.arterybleeding=false
+	ply.brokenspine=false
+	ply.Attacker = nil
+	ply.KillReason = nil
+
+	ply.LeftHandArtery = false
+	ply.RightHandArtery = false
+
+	ply.LeftLegArtery = false
+	ply.RightLegArtery = false
+
+	ply.msgLeftArm = 0
+	ply.msgRightArm = 0
+	ply.msgLeftLeg = 0
+	ply.msgRightLeg = 0
+	
+	ply.LastDMGInfo = nil
+	ply.LastHitPhysicsBone = nil
+	ply.LastHitBoneName = nil
+	ply.LastHitGroup = nil
+	ply.LastAttacker = nil
+
+    ply.Blood = 5000
+    ply.pain = 0
+    ply.attackees = {}
+    ply.firstTimeNotifiedLeftLeg = true
+    ply.firstTimeNotifiedRightLeg = true
+end)
 
 
 hook.Add("CanTool", "RestrictCreatorTool", function(ply, tr, tool)

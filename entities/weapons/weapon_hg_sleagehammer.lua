@@ -1,7 +1,7 @@
-SWEP.Base = "nsbase_melee"
+SWEP.Base = "weapon_hg_melee_base"
 
 SWEP.PrintName = "Кувалда"
-SWEP.Category = "Оружие | Холодное Оружие"
+SWEP.Category = "Оружие - Ближний Бой"
 SWEP.Instructions = "Ручной ударный инструмент, предназначенный для боя камня, нанесения исключительно сильных ударов при обработке металла, на демонтаже и монтаже конструкций."
 SWEP.Spawnable= true
 SWEP.AdminSpawnable= true

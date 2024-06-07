@@ -1,7 +1,7 @@
-SWEP.Base = "nsbase_melee"
+SWEP.Base = "weapon_hg_melee_base"
 
 SWEP.PrintName = "Лопата"
-SWEP.Category = "Оружие | Холодное Оружие"
+SWEP.Category = "Оружие - Ближний Бой"
 SWEP.Instructions = "Ручной шанцевый инструмент, используемый преимущественно для работы (копание, расчистка, перенос и так далее) с грунтом."
 
 SWEP.Spawnable= true

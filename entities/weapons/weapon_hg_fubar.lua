@@ -1,7 +1,7 @@
-SWEP.Base = "nsbase_melee"
+SWEP.Base = "weapon_hg_melee_base"
 
-SWEP.PrintName = "Монтировка"
-SWEP.Category = "Оружие | Холодное Оружие"
+SWEP.PrintName = "Фубар"
+SWEP.Category = "Оружие - Ближний Бой"
 SWEP.Instructions = "Ручное рычажно-клиновое приспособление для вытаскивания (выдирания) вбитых в материал (дерево, пластик и др.) гвоздей."
 
 SWEP.Spawnable= true

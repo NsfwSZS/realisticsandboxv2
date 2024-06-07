@@ -6,7 +6,7 @@ SWEP.Instructions			= "Salatis Imersive Base"
 SWEP.Purpose 				= "Raise weapon - Hold RMB\nOn Rised: Rise sight - MWUP, Down sight - MWDOWN\nShoot - LMB"
 SWEP.Category 				= "SIB"
 
-SWEP.Spawnable 				= true
+SWEP.Spawnable 				= false
 SWEP.AdminOnly 				= false
 
 SWEP.HoldType  =  "revolver"

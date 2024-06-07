@@ -18,7 +18,7 @@ SWEP.Primary.Ammo			= "12/70 gauge"
 SWEP.Primary.Cone = 0.05
 SWEP.Primary.Damage = 30
 SWEP.Primary.Spread = 15
-SWEP.Primary.Sound = "toz_shotgun/toz_fp.wav"
+SWEP.Primary.Sound = "weapons/sawedoff/fire.wav"
 SWEP.Primary.FarSound = "snd_jack_hmcd_sht_far.wav"
 SWEP.Primary.Suppsound = "toz_shotgun/toz_suppressed_fp.wav"
 SWEP.Primary.Force = 150
@@ -58,8 +58,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/district/w_shot_r870_checha12.mdl"
-SWEP.WorldModel				= "models/district/w_shot_r870_checha12.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_shot_r870.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_shot_r870.mdl"
 
 SWEP.addAng = Angle(-0.5,0,0) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust

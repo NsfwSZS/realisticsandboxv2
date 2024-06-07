@@ -53,8 +53,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/district/w_smg_p90.mdl"
-SWEP.WorldModel				= "models/district/w_smg_p90.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_smg_p90.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_smg_p90.mdl"
 
 SWEP.addAng = Angle(-1.2,1.87,0) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust

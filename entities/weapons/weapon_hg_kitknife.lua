@@ -1,7 +1,7 @@
-SWEP.Base = "nsbase_melee"
+SWEP.Base = "weapon_hg_melee_base"
 
-SWEP.PrintName = "Кухонный Нож"
-SWEP.Category = "Оружие | Холодное Оружие"
+SWEP.PrintName = "Кухонный ножик"
+SWEP.Category = "Оружие - Ближний Бой"
 SWEP.Instructions = "Колющий, а также рубящий, режущий инструмент, рабочей частью которого является клинок — полоса, выполненная из твёрдого материала."
 
 SWEP.Spawnable= true
@@ -48,3 +48,4 @@ SWEP.FlashHitSound = "snd_jack_hmcd_slash.wav"
 SWEP.ShouldDecal = true
 SWEP.HoldTypeWep = "melee"
 SWEP.DamageType = DMG_SLASH
+SWEP.Lezvie = 2.8

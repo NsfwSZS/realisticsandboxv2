@@ -37,48 +37,8 @@ hook.Add("Player Think","homigrad-hungry",function(ply,time)
 	ply:SetHealth(not ply.heartstop and (math.min(ply:Health() + math.max(math.ceil(ply.hungryregen),0.1),150)) or ply:Health())
 end)
 
---[[local furrypedik = {
-	--["STEAM_0:1:508504180"] = true,
-	--["STEAM_0:0:419643141"] = true,
-	--["STEAM_0:1:130152051"] = true
-}
-
-local sounds = {
-	"wowozela/samples/meow.wav",
-	"wowozela/samples/woof.wav",
-	"bullshitfuck/cute-uwu.mp3",
-	"bullshitfuck/owo_oj0bqgj.mp3",
-	"bullshitfuck/uwudaddy.mp3"
-}
-
-local function uwo(ply)
-	furry = ply
-	furry:EmitSound( table.Random(sounds), 75, 100, 5, CHAN_WEAPON )
-	timer.Create("furry"..furry:EntIndex(),math.random(2,15),1,function()
-		if furrypedik[furry:SteamID()] and furry:Alive() then
-			uwo(furry)
-		else
-			timer.Destroy("furry"..furry:EntIndex())
-		end
-	end)
-end
-
-local FurryModels = {
-	"models/player/smoky/Smoky.mdl",
-	"models/player/smoky/Smokycl.mdl",
-	"models/LeymiRBA/Gyokami/Gyokami.mdl",
-	"models/eradium/protogens/cody.mdl"
-}]]--
 
 hook.Add("PlayerSpawn","homigrad-hungry",function(ply)
-	if PLYSPAWN_OVERRIDE then return end
-	--[[if furrypedik[ply:SteamID()] then
-		--print("huy")
-		uwo(ply)
-		timer.Simple(1,function()
-			ply:SetModel(table.Random(FurryModels))
-		end)
-	end]]--
 	ply.hungry = 89
 	ply.hungryregen = 0
 	ply.hungryNext = 0
@@ -86,29 +46,7 @@ hook.Add("PlayerSpawn","homigrad-hungry",function(ply)
 end)
 
 concommand.Add("hg_hungryinfo",function(ply)
-	if not ply:IsAdmin() then return end
 
 	ply:ChatPrint("hungry: " .. ply.hungry)
 	ply:ChatPrint("hungryregen: " .. ply.hungryregen)
 end)
-
---[[
-COMMANDS.uwu = {function(ply,args)
-	if !args[1] then
-		uwo(ply)
-		return
-	end
-
-	if args[1] == "*" then
-		for k, v in pairs(player.GetAll()) do
-			uwo(v)
-			v:SetModel(table.Random(FurryModels))
-		end
-	end
-
-	if player.GetBySteamID( args[1] ) then
-		uwo(player.GetBySteamID( args[1] ))
-		player.GetBySteamID( args[1] ):SetModel(table.Random(FurryModels))
-	end
-end}
-]]--

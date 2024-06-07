@@ -53,8 +53,8 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/district/w_snip_scout.mdl"
-SWEP.WorldModel				= "models/district/w_snip_scout.mdl"
+SWEP.ViewModel				= "models/weapons/nsbase/w_snip_scout.mdl"
+SWEP.WorldModel				= "models/weapons/nsbase/w_snip_scout.mdl"
 
 SWEP.addAng = Angle(0,0,0) -- Barrel pos adjust
 SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust
@@ -67,8 +67,8 @@ SWEP.DrawScope = true
 SWEP.ScopePos = Vector(0,0,0)
 SWEP.ScopeSize = 0.5
 SWEP.ScopeAdjust = Angle(0,0,90)
-SWEP.ScopeFov = 2
-SWEP.ScopeMat = Material("decals/perekrestie3.png")
+SWEP.ScopeFov = 10
+SWEP.ScopeMat = Material("decals/hamr3x.png")
 
 if CLIENT then
     function SWEP:Initialize()

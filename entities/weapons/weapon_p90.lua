@@ -3,8 +3,8 @@ SWEP.Base = 'nsbase' -- base
 
 SWEP.PrintName 				= "FN P90"
 SWEP.Author 				= "FN Herstal"
-SWEP.Instructions			= "The FN P90 is a submachine gun chambered for the 5.7×28mm cartridge, also classified as a personal defense weapon, designed and manufactured by FN Herstal in Belgium.[9][10][11] Created in response to NATO requests for a replacement for 9×19mm Parabellum firearms, the P90 was designed as a compact but powerful firearm for vehicle crews, operators of crew-served weapons, support personnel, special forces, and counter-terrorist groups."
-SWEP.Category 				= "Оружие | ПП"
+SWEP.Instructions			= "The FN P90 is a submachine gun chambered for the 5.7x28mm cartridge, also classified as a personal defense weapon, designed and manufactured by FN Herstal in Belgium.[9][10][11] Created in response to NATO requests for a replacement for 9x19mm Parabellum firearms, the P90 was designed as a compact but powerful firearm for vehicle crews, operators of crew-served weapons, support personnel, special forces, and counter-terrorist groups."
+SWEP.Category 				= "Оружие - Пистолеты-пулемёты"
 
 SWEP.Spawnable 				= true
 SWEP.AdminOnly 				= false
@@ -14,15 +14,15 @@ SWEP.AdminOnly 				= false
 SWEP.Primary.ClipSize		= 50
 SWEP.Primary.DefaultClip	= 50
 SWEP.Primary.Automatic		= true
-SWEP.Primary.Ammo			= "SMG1"
+SWEP.Primary.Ammo			= "5.7x28 mm"
 SWEP.Primary.Cone = 0
-SWEP.Primary.Damage = 26
+SWEP.Primary.Damage = 35
 SWEP.Primary.Spread = 0
 SWEP.Primary.Sound = "weapons/p90/fire01.wav"
 SWEP.Primary.FarSound = "snd_jack_hmcd_smp_far.wav"
-SWEP.Primary.Force = 25
-SWEP.ReloadTime = 1.8
-SWEP.ShootWait = 0.1
+SWEP.Primary.Force = 60
+SWEP.ReloadTime = 2.2
+SWEP.ShootWait = 0.05
 SWEP.ReloadSounds = {
     [0.1] = {"weapons/p90/clipout.wav"},
     [0.7] = {"weapons/p90/clipin.wav"},
@@ -53,13 +53,28 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/weapons/nsbase/w_smg_p90.mdl"
-SWEP.WorldModel				= "models/weapons/nsbase/w_smg_p90.mdl"
+SWEP.ViewModel				= "models/district/w_smg_p90.mdl"
+SWEP.WorldModel				= "models/district/w_smg_p90.mdl"
 
-SWEP.addPos = Vector(14, -0.2, 7)
-SWEP.addAng = Angle(-8, 2.4, 0)
-SWEP.sightPos = Vector(9.2, -1, 0.73)
-SWEP.sightAng = Angle(0, 4, 0)
-SWEP.fakeHandRight = Vector(2, -2, 2)
-SWEP.fakeHandLeft = Vector(4, -5, -4)
-SWEP.Recoil = 0.75
+SWEP.addAng = Angle(-1.2,1.87,0) -- Barrel pos adjust
+SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust
+SWEP.SightPos = Vector(-8,1,7) -- Sight pos
+SWEP.SightAng = Angle(-10,2,0) -- Sight ang
+
+SWEP.Mobility = 1.3
+
+SWEP.PremiumSkin = {
+    [3] = "null",
+    [4] = "null",
+}
+
+function SWEP:DrawWorldModel()
+    self:DrawModel()
+
+    if IsValid(self:GetOwner()) and self:GetOwner():IsPlayer() then
+        for k,v in pairs(self.PremiumSkin) do
+            self:SetSubMaterial( k, v )
+        end
+        self:DrawModel()
+    end
+end

@@ -3,8 +3,8 @@ SWEP.Base = 'nsbase' -- base
 
 SWEP.PrintName 				= "HK-MP5"
 SWEP.Author 				= "Heckler & Koch"
-SWEP.Instructions			= ""
-SWEP.Category 				= "Оружие | ПП"
+SWEP.Instructions			= "The Heckler & Koch MP5 is a submachine gun which fires 9x19mm Parabellum cartridges, developed in the 1960s by Heckler & Koch. There are over 100 variants and clones of the MP5, including some semi-automatic versions."
+SWEP.Category 				= "Оружие - Пистолеты-пулемёты"
 
 SWEP.Spawnable 				= true
 SWEP.AdminOnly 				= false
@@ -14,13 +14,13 @@ SWEP.AdminOnly 				= false
 SWEP.Primary.ClipSize		= 30
 SWEP.Primary.DefaultClip	= 30
 SWEP.Primary.Automatic		= true
-SWEP.Primary.Ammo			= "Pistol"
+SWEP.Primary.Ammo			= "9х19 mm Parabellum"
 SWEP.Primary.Cone = 0
-SWEP.Primary.Damage = 27
+SWEP.Primary.Damage = 40
 SWEP.Primary.Spread = 0
 SWEP.Primary.Sound = "weapons/mp9/fire01.wav"
 SWEP.Primary.FarSound = "snd_jack_hmcd_smp_far.wav"
-SWEP.Primary.Force = 15
+SWEP.Primary.Force = 30
 SWEP.ReloadTime = 2.2
 SWEP.ShootWait = 0.08
 SWEP.ReloadSounds = {
@@ -52,13 +52,12 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/weapons/nsbase/w_smg_mp5.mdl"
-SWEP.WorldModel				= "models/weapons/nsbase/w_smg_mp5.mdl"
+SWEP.ViewModel				= "models/district/w_smg_mp5.mdl"
+SWEP.WorldModel				= "models/district/w_smg_mp5.mdl"
 
-SWEP.addPos = Vector(10, -1.05, 7)
-SWEP.addAng = Angle(-8.5, 2.2, 0)
-SWEP.sightPos = Vector(7, 6, 1.33)
-SWEP.sightAng = Angle(-2, 2, 0)
-SWEP.fakeHandRight = Vector(6, -2, 0)
-SWEP.fakeHandLeft = Vector(13, -4, -7)
-SWEP.Recoil = 0.4
+SWEP.addAng = Angle(-0.1,1.5,0) -- Barrel pos adjust
+SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust
+SWEP.SightPos = Vector(-8,1.135,5.8) -- Sight pos
+SWEP.SightAng = Angle(-10,0,0) -- Sight ang
+
+SWEP.Mobility = 1.3

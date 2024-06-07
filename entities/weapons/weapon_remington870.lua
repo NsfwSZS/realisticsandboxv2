@@ -3,23 +3,25 @@ SWEP.Base = 'nsbase' -- base
 SWEP.PrintName 				= "Remington 870"
 SWEP.Author 				= "Remington Arms Company"
 SWEP.Instructions			= "The Remington Model 870 is a pump-action shotgun manufactured by Remington Arms Company, LLC. It is widely used by the public for shooting sports, hunting and self-defense, as well as by law enforcement and military organizations worldwide."
-SWEP.Category 				= "Оружие | Дробовики"
+SWEP.Category 				= "Оружие - Дробовики"
 
 SWEP.Spawnable 				= true
 SWEP.AdminOnly 				= false
+if (CLIENT) then SWEP.WepSelectIcon=surface.GetTextureID("vgui/wep_jack_hmcd_shotgun") SWEP.IconOverride="vgui/wep_jack_hmcd_shotgun" end
 
 ------------------------------------------
-
+SWEP.vbwPos = Vector(-8,-4.1,2)
 SWEP.Primary.ClipSize		= 6
 SWEP.Primary.DefaultClip	= 6
 SWEP.Primary.Automatic		= false
-SWEP.Primary.Ammo			= "SMG1"
-SWEP.Primary.Cone = 0.15
-SWEP.Primary.Damage = 33
-SWEP.Primary.Spread = 0
-SWEP.Primary.Sound = "snd_jack_hmcd_sht_close.wav"
+SWEP.Primary.Ammo			= "12/70 gauge"
+SWEP.Primary.Cone = 0.05
+SWEP.Primary.Damage = 30
+SWEP.Primary.Spread = 15
+SWEP.Primary.Sound = "toz_shotgun/toz_fp.wav"
 SWEP.Primary.FarSound = "snd_jack_hmcd_sht_far.wav"
-SWEP.Primary.Force = 35
+SWEP.Primary.Suppsound = "toz_shotgun/toz_suppressed_fp.wav"
+SWEP.Primary.Force = 150
 SWEP.ReloadTime = 2.7
 SWEP.ShootWait = 0.5
 SWEP.NumBullet = 12
@@ -34,7 +36,7 @@ SWEP.ReloadSounds = {
 }
 SWEP.TwoHands = true
 SWEP.Shell = "EjectBrass_12Gauge"
-SWEP.ShellRotate = false
+SWEP.ShellRotate = true
 
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
@@ -56,13 +58,26 @@ SWEP.SlotPos				= 0
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
-SWEP.ViewModel				= "models/weapons/nsbase/w_shot_r870.mdl"
-SWEP.WorldModel				= "models/weapons/nsbase/w_shot_r870.mdl"
+SWEP.ViewModel				= "models/district/w_shot_r870_checha12.mdl"
+SWEP.WorldModel				= "models/district/w_shot_r870_checha12.mdl"
 
-SWEP.addPos = Vector(10, -0.8, 5.5)
-SWEP.addAng = Angle(-8.9, -0.2, 0)
-SWEP.sightPos = Vector(4, 6, 0.77)
-SWEP.sightAng = Angle(-5, -5, 0)
-SWEP.fakeHandRight = Vector(12, -2, 0)
-SWEP.fakeHandLeft = Vector(13, -3, -5)
-SWEP.Recoil = 1.5
+SWEP.addAng = Angle(-0.5,0,0) -- Barrel pos adjust
+SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust
+SWEP.SightPos = Vector(-6,0.7,3.4) -- Sight pos
+SWEP.SightAng = Angle(-11,0,0) -- Sight ang
+
+SWEP.Mobility = 1.5
+
+function SWEP:Think()
+    if self:GetNWBool("WEP_Supressor", false) == true then
+        self.Primary.Force = 110
+        self.Primary.Damage = 28
+        self.Weight = 5.5
+        self.Mobility = 1.9
+    else
+        self.Primary.Force = 150
+        self.Primary.Damage = 30
+        self.Weight = 5
+        self.Mobility = 1.5
+    end
+end

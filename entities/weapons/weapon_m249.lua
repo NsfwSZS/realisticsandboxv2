@@ -1,20 +1,26 @@
-SWEP.Base = "nsbase" -- base 
-SWEP.PrintName = "M249"
-SWEP.Instructions = ""
-SWEP.Category = "Оружие | Пулеметы"
-SWEP.Spawnable = true
-SWEP.AdminOnly = false
+SWEP.Base = 'nsbase' -- base
+
+SWEP.PrintName 				= "M249"
+SWEP.Author 				= "FN Herstal"
+SWEP.Instructions			= "The M249 SAW formally written as Light Machine Gun, 5.56 mm, M249, is the US military’s adaptation of the Belgian FN Minimi, a light machine gun manufactured by the Belgian company FN Herstal (FN). "
+SWEP.Category 				= "Оружие - Пулемёты"
+
+SWEP.Spawnable 				= true
+SWEP.AdminOnly 				= false
+
 ------------------------------------------
-SWEP.Primary.ClipSize = 100
-SWEP.Primary.DefaultClip = SWEP.Primary.ClipSize * 2
-SWEP.Primary.Automatic = true
-SWEP.Primary.Ammo = "smg1"
+
+SWEP.Primary.ClipSize		= 150
+SWEP.Primary.DefaultClip	= 150
+SWEP.Primary.Automatic		= true
+SWEP.Primary.Ammo			= "5.56x45 mm"
 SWEP.Primary.Cone = 0
-SWEP.Primary.Damage = 32
+SWEP.Primary.Damage = 60
 SWEP.Primary.Spread = 0
-SWEP.Primary.Sound = "weapons/m249/m249-1.wav"
-SWEP.Primary.Force = 20
-SWEP.ReloadTime = 5
+SWEP.Primary.Sound = "weapons/m249/fire.wav"
+SWEP.Primary.FarSound = "weapons/m249/distant.wav"
+SWEP.Primary.Force = 42
+SWEP.ReloadTime = 2.7
 SWEP.ShootWait = 0.08
 SWEP.ReloadSounds = {
     [0.1] = {"weapons/m249/boxout.wav"},
@@ -22,26 +28,35 @@ SWEP.ReloadSounds = {
     [1.5] = {"weapons/m249/coverdown.wav"},
 }
 SWEP.TwoHands = true
-SWEP.Secondary.ClipSize = -1
-SWEP.Secondary.DefaultClip = -1
-SWEP.Secondary.Automatic = false
-SWEP.Secondary.Ammo = "none"
+SWEP.Shell = "EjectBrass_556"
+SWEP.ShellRotate = false
+
+SWEP.Secondary.ClipSize		= -1
+SWEP.Secondary.DefaultClip	= -1
+SWEP.Secondary.Automatic	= false
+SWEP.Secondary.Ammo			= "none"
+
 ------------------------------------------
-SWEP.Weight = 5
-SWEP.AutoSwitchTo = false
-SWEP.AutoSwitchFrom = false
-SWEP.HoldType = "smg"
+
+SWEP.Weight					= 5
+SWEP.AutoSwitchTo			= false
+SWEP.AutoSwitchFrom			= false
+
+SWEP.HoldType = "ar2"
+
 ------------------------------------------
-SWEP.Slot = 2
-SWEP.SlotPos = 2
-SWEP.DrawAmmo = true
-SWEP.DrawCrosshair = false
-SWEP.ViewModel = "models/weapons/nsbase/w_mach_m249para.mdl"
-SWEP.WorldModel = "models/weapons/nsbase/w_mach_m249para.mdl"
-SWEP.addPos = Vector(0, 2, -1.3)
-SWEP.addAng = Angle(0.5, 0, 0)
-SWEP.sightPos = Vector(7.7, 5, 0.63)
-SWEP.sightAng = Angle(-5, -2.5, 0)
-SWEP.fakeHandRight = Vector(12, -2, 0)
-SWEP.fakeHandLeft = Vector(13, -3, -5)
-SWEP.Recoil = 0.65
+
+SWEP.Slot					= 2
+SWEP.SlotPos				= 0
+SWEP.DrawAmmo				= true
+SWEP.DrawCrosshair			= false
+
+SWEP.ViewModel				= "models/district/w_mach_m249para.mdl"
+SWEP.WorldModel				= "models/district/w_mach_m249para.mdl"
+
+SWEP.addAng = Angle(0,-0.5,0) -- Barrel pos adjust
+SWEP.addPos = Vector(0,0,0) -- Barrel ang adjust
+SWEP.SightPos = Vector(-6,0.6,7.5) -- Sight pos
+SWEP.SightAng = Angle(0,0,0) -- Sight ang
+
+SWEP.Mobility = 4

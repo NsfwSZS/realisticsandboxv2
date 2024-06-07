@@ -2,18 +2,19 @@ SWEP.Base = 'nsbase' -- base
 
 SWEP.PrintName 				= "HK-USP"
 SWEP.Author 				= "Heckler & Koch"
-SWEP.Instructions			= ""
-SWEP.Category 				= "Оружие | Пистолеты"
+SWEP.Instructions			= "The USP is a semi-automatic pistol developed in Germany by Heckler & Koch GmbH (H&K) as a replacement for the P7 series of handguns."
+SWEP.Category 				= "Оружие - Пистолеты"
 
 SWEP.Spawnable 				= true
 SWEP.AdminOnly 				= false
-
+if (CLIENT) then SWEP.WepSelectIcon=surface.GetTextureID("vgui/hud/tfa_ins2_uspt") SWEP.IconOverride="vgui/hud/tfa_ins2_uspt" end
+SWEP.vbwPos = Vector(6,0,-3)
 ------------------------------------------
 
 SWEP.Primary.ClipSize		= 15
 SWEP.Primary.DefaultClip	= 15
 SWEP.Primary.Automatic		= false
-SWEP.Primary.Ammo			= "Pistol"
+SWEP.Primary.Ammo			= "9х19 mm Parabellum"
 SWEP.Primary.Cone = 0
 SWEP.Primary.Damage = 45
 SWEP.Primary.Spread = 0
@@ -21,7 +22,7 @@ SWEP.Primary.Sound = "weapons/usps/us_fire01.wav"
 SWEP.Primary.FarSound = "snd_jack_hmcd_smp_far.wav"
 SWEP.Primary.Force = 25
 SWEP.ReloadTime = 2
-SWEP.ShootWait = 0.1
+SWEP.ShootWait = 0.07
 SWEP.ReloadSounds = {
     [0.1] = {"weapons/usps/clipout.wav"},
     [0.8] = {"weapons/usps/clipin.wav"},
@@ -43,12 +44,11 @@ SWEP.SlotPos				= 2
 SWEP.DrawAmmo				= true
 SWEP.DrawCrosshair			= false
 
+
 SWEP.ViewModel = "models/weapons/nsbase/w_pist_usp.mdl"
 SWEP.WorldModel = "models/weapons/nsbase/w_pist_usp.mdl"
 
-SWEP.addPos = Vector(5, 0.1, 4)
-SWEP.addAng = Angle(-2.5, 5.05, 0)
-SWEP.sightPos = Vector(3.7, 15, 1.55)
-SWEP.sightAng = Angle(4, 8, 0)
-SWEP.fakeHandRight = Vector(3.5, -1.5, 2)
-SWEP.Recoil = 1.1
+SWEP.addAng = Angle(0.2,-0.05,0) -- Barrel ang adjust
+SWEP.addPos = Vector(0,-2,0) -- Barrel pos adjust
+SWEP.SightPos = Vector(-14,1.44,3.7) -- Sight pos
+SWEP.SightAng = Angle(2,12,0) -- Sight ang

@@ -1,47 +1,70 @@
-SWEP.Base = "nsbase" -- base 
-SWEP.PrintName = "Glock-17"
-SWEP.Author = ""
-SWEP.Instructions = ""
-SWEP.Category = "Оружие | Пистолеты"
-SWEP.Spawnable = true
-SWEP.AdminOnly = false
+SWEP.Base = 'nsbase' -- base
+
+SWEP.PrintName 				= "Glock 18"
+SWEP.Author 				= "Glock Ges.m.b.H."
+SWEP.Instructions			= "Glock is a brand of polymer-framed, short recoil-operated, locked-breech semi-automatic pistols designed and produced by Austrian manufacturer Glock Ges.m.b.H."
+SWEP.Category 				= "Оружие - Пистолеты"
+
+SWEP.Spawnable 				= true
+SWEP.AdminOnly 				= false
+if (CLIENT) then SWEP.WepSelectIcon=surface.GetTextureID("vgui/tfa_ins2_glock_p80") SWEP.IconOverride="vgui/tfa_ins2_glock_p80" end
+
 ------------------------------------------
-SWEP.Primary.ClipSize = 17
-SWEP.Primary.DefaultClip = SWEP.Primary.ClipSize * 2
-SWEP.Primary.Automatic = false
-SWEP.Primary.Ammo = "pistol"
+
+SWEP.Primary.ClipSize		= 17
+SWEP.Primary.DefaultClip	= 17
+SWEP.Primary.Automatic		= false
+SWEP.Primary.Ammo			= "9х19 mm Parabellum"
 SWEP.Primary.Cone = 0
-SWEP.Primary.Damage = 21
+SWEP.Primary.Damage = 45
 SWEP.Primary.Spread = 0
-SWEP.Primary.Sound = "weapons/glock/glock18-1.wav"
-SWEP.Primary.Force = 25
-SWEP.ReloadTime = 1.4
-SWEP.ShootWait = 0.1
+SWEP.Primary.Sound = "hndg_beretta92fs/beretta92_fire1.wav"
+SWEP.Primary.FarSound = "snd_jack_hmcd_smp_far.wav"
+SWEP.Primary.Suppsound = "homigrad/weapons/pistols/mp5-sil.wav"
+SWEP.Primary.Force = 20
+SWEP.ReloadTime = 2
+SWEP.ShootWait = 0.07
 SWEP.ReloadSounds = {
     [0.1] = {"weapons/glock18/clipout.wav"},
     [0.8] = {"weapons/glock18/clipin.wav"},
     [1.2] = {"weapons/glock18/slideback.wav"},
     [1.4] = {"weapons/glock18/slideforward.wav"},
 }
-SWEP.Secondary.ClipSize = -1
-SWEP.Secondary.DefaultClip = -1
-SWEP.Secondary.Automatic = false
-SWEP.Secondary.Ammo = "pistol"
+
 ------------------------------------------
-SWEP.Weight = 1
-SWEP.AutoSwitchTo = false
-SWEP.AutoSwitchFrom = false
+
+SWEP.Weight					= 5
+SWEP.AutoSwitchTo			= false
+SWEP.AutoSwitchFrom			= false
+
 SWEP.HoldType = "revolver"
+
+SWEP.vbwPos = Vector(-6,-8,5.7)
+SWEP.vbwAng = Angle(0,-60,-90)
+
 ------------------------------------------
-SWEP.Slot = 1
-SWEP.SlotPos = 2
-SWEP.DrawAmmo = true
-SWEP.DrawCrosshair = false
-SWEP.ViewModel = "models/weapons/nsbase/w_pist_glock18.mdl"
-SWEP.WorldModel = "models/weapons/nsbase/w_pist_glock18.mdl"
-SWEP.addPos = Vector(1, 0.1, 0)
-SWEP.addAng = Angle(0, 4, 0)
-SWEP.sightPos = Vector(5.2, 13, 1.4)
-SWEP.sightAng = Angle(4, 8, 0)
-SWEP.fakeHandRight = Vector(3.5, -1.5, 2)
-SWEP.Recoil = 1.1
+
+SWEP.Slot					= 1
+SWEP.SlotPos				= 2
+SWEP.DrawAmmo				= true
+SWEP.DrawCrosshair			= false
+
+SWEP.ViewModel				= "models/pwb/weapons/w_glock17_checha17.mdl"
+SWEP.WorldModel				= "models/pwb/weapons/w_glock17_checha17.mdl"
+
+SWEP.addAng = Angle(0.5,0,0) -- Barrel ang adjust
+SWEP.addPos = Vector(0,0,0) -- Barrel pos adjust
+SWEP.SightPos = Vector(-14,0,1.6) -- Sight pos
+SWEP.SightAng = Angle(-10,0,-5) -- Sight ang
+
+SWEP.Mobility = 2
+
+SWEP.PremiumSkin = {
+    [4] = "skins/goldmat/goldmaterial",
+}
+
+function SWEP:Think()
+    if self:GetNWBool("WEP_Supressor", false) == true then
+        self.Primary.Force = 10
+    end
+end

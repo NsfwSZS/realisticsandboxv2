@@ -8,7 +8,7 @@ local validWeapons = {
     ["gmod_tool"] = true,
     ["weapon_physgun"] = true,
     ["weapon_hands"] = true,
-    ["weapon_ak47"] = true,
+    ["weapon_akm"] = true,
     ["weapon_deagle"] = true,
     ["weapon_glock"] = true,
     ["weapon_m249"] = true,
@@ -83,11 +83,11 @@ local function ProcessFiles(folder, isServer)
         local fullPath = folder .. "/" .. f
         if StartWith(f, "cl_") or StartWith(f, "sh_") then
             AddCSLuaFile(fullPath)
-            -- MsgC(Color(0, 150, 255), ("[Клиент] Загруженно на клент: " .. fullPath .. "\n"))
+            MsgC(Color(0, 150, 255), ("[Клиент] Загруженно на клент: " .. fullPath .. "\n"))
         end
         if isServer and (StartWith(f, "sv_") or StartWith(f, "sh_")) then
             include(fullPath)
-            -- MsgC(Color(255,0,0), ("[Сервер] Загруженно на сервер: " .. fullPath .. "\n"))
+            MsgC(Color(255,0,0), ("[Сервер] Загруженно на сервер: " .. fullPath .. "\n"))
         end
     end
 
@@ -202,6 +202,27 @@ function GM:PlayerCanPickupWeapon(ply, weapon)
     end
 end
 
+function GM:PlayerLoadout( ply )
+    ply:StripWeapons() 
+    ply:Give("weapon_hands")
+    return true
+end
+
+-- hook.Add("PlayerSpawn","Standart",function( ply )
+--     --jmod cum incoming
+-- 	--net.Start("remove_jmod_effects")
+-- 	--net.Broadcast()
+-- 	--jmod cum end
+-- 	ply.firstTimeNotifiedLeftLeg = true
+-- 	ply.firstTimeNotifiedRightLeg = true
+-- 	ply.attackees = {}
+-- 	ply:SetCanZoom(false)
+-- 	ply.Blood = 5000
+-- 	ply.pain = 0
+
+-- end)
+
+
 hook.Add("CanTool", "RestrictCreatorTool", function(ply, tr, tool)
     if tool == "creator" then
         if SERVER then
@@ -215,8 +236,3 @@ hook.Add("CanTool", "RestrictCreatorTool", function(ply, tr, tool)
     end
 end)
 
-function GM:PlayerLoadout( ply )
-    ply:StripWeapons() 
-    ply:Give("weapon_hands")
-    return true
-end
